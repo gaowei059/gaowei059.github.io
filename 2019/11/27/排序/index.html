@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="Keep Clam And Carry On！" type="application/atom+xml">
+  <link rel="alternate" href="https://gaowei059.github.io/" title="Keep Clam And Carry On！" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -47,14 +47,14 @@
   };
 </script>
 
-  <meta name="description" content="初级排序选择排序不断选择剩余元素中的最小者 1234567891011121314public class Selection&amp;#123;	public static void sort (Comparable[] a)    &amp;#123;        int N = a.length;        for(int i = 0; i &amp;lt; N; i++)        &amp;#123;">
+  <meta name="description" content="初级排序《算法（第四版）》 第二章第一节 本章主要内容是选择排序、插入排序以及shell排序。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;27&#x2F;%E6%8E%92%E5%BA%8F&#x2F;index.html">
 <meta property="og:site_name" content="Keep Clam And Carry On！">
-<meta property="og:description" content="初级排序选择排序不断选择剩余元素中的最小者 1234567891011121314public class Selection&amp;#123;	public static void sort (Comparable[] a)    &amp;#123;        int N = a.length;        for(int i = 0; i &amp;lt; N; i++)        &amp;#123;">
+<meta property="og:description" content="初级排序《算法（第四版）》 第二章第一节 本章主要内容是选择排序、插入排序以及shell排序。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-21T03:23:40.595Z">
+<meta property="og:updated_time" content="2019-11-27T09:17:13.617Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/27/%E6%8E%92%E5%BA%8F/">
@@ -192,16 +192,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-27 16:32:43" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：17:17:13" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-21 11:23:40" itemprop="dateModified" datetime="2019-11-21T11:23:40+08:00">2019-11-21</time>
-              </span>
 
           
 
@@ -214,7 +208,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="初级排序"><a href="#初级排序" class="headerlink" title="初级排序"></a>初级排序</h1><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>不断选择剩余元素中的最小者</p>
+        <h1 id="初级排序"><a href="#初级排序" class="headerlink" title="初级排序"></a>初级排序</h1><p>《算法（第四版）》 第二章第一节 本章主要内容是选择排序、插入排序以及shell排序。</p>
+ <a id="more"></a> 
+
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>不断选择剩余元素中的最小者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Selection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span> <span class="params">(Comparable[] a)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> min = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;  j &lt; N; j++)</span><br><span class="line">                <span class="keyword">if</span>(less(a[j], a[min]))	min = j;</span><br><span class="line">            exch(a, i, min); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度O(n^2)</p>
@@ -310,7 +307,7 @@
   </nav>
 </div>
   <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
+    <a href="https://gaowei059.github.io/" target="_blank" rel="alternate noopener">
       <i class="fa fa-rss"></i>RSS
     </a>
   </div>

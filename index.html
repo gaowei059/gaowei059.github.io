@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="Keep Clam And Carry On！" type="application/atom+xml">
+  <link rel="alternate" href="https://gaowei059.github.io/" title="Keep Clam And Carry On！" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -190,16 +190,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-27 16:32:43" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：17:17:13" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-21 11:23:40" itemprop="dateModified" datetime="2019-11-21T11:23:40+08:00">2019-11-21</time>
-              </span>
 
           
 
@@ -212,24 +206,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="初级排序"><a href="#初级排序" class="headerlink" title="初级排序"></a>初级排序</h1><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>不断选择剩余元素中的最小者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Selection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span> <span class="params">(Comparable[] a)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> min = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;  j &lt; N; j++)</span><br><span class="line">                <span class="keyword">if</span>(less(a[j], a[min]))	min = j;</span><br><span class="line">            exch(a, i, min); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度O(n^2)</p>
-<p>运行时间与输入无关，有序数组同样需要等长时间。</p>
-<p>数据的移动是最少的，N次交换——交换次数与数组长度是线性关系。</p>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>每次都把当前值放入该值前面部分</p>
-<p>插入排序时间取决于输入中元素的初始顺序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Insertion</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(a[j],a[j-<span class="number">1</span>]); j--)</span><br><span class="line">                exch(a, j, j-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>使数组中任意间隔为h的元素都是有序的。</p>
-<p>通过提升速度来解决其他方式无法解决的问题是研究算法的设计和性能的主要原因之一。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//Shell排序算法</span></span><br><span class="line">	<span class="keyword">int</span> N = a.length;</span><br><span class="line">	<span class="keyword">int</span> h = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(h &lt; N/<span class="number">3</span>) h = <span class="number">3</span>*h + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(h &gt;= <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = h; i &lt; N; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;= h &amp;&amp; less(a[j],a[j-h]); j -= h)</span><br><span class="line">               exch(a, j, j-h);</span><br><span class="line">		&#125;</span><br><span class="line">		h = h/<span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并：将两个有序的数组归并成一个更大的有序数组。</p>
-<p>优点：任意长度为N的数组排序所需时间和NlogN成正比</p>
-<p>缺点：所需的额外空间和N成正比</p>
-<h2 id="原地归并的抽象方法"><a href="#原地归并的抽象方法" class="headerlink" title="原地归并的抽象方法"></a>原地归并的抽象方法</h2>
+          <h1 id="初级排序"><a href="#初级排序" class="headerlink" title="初级排序"></a>初级排序</h1><p>《算法（第四版）》 第二章第一节 本章主要内容是选择排序、插入排序以及shell排序。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/27/%E6%8E%92%E5%BA%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -271,16 +256,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-27 16:32:43" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：17:16:06" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-26 19:27:45" itemprop="dateModified" datetime="2019-11-26T19:27:45+08:00">2019-11-26</time>
-              </span>
 
           
 
@@ -293,22 +272,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h2><p>“is-a”关系是继承的一个明显特征</p>
-<h3 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h3><p>关键字extends表示继承</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Manager</span> <span class="keyword">extends</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//添加方法和域</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>已存在的类：父类、超类或基类</p>
-<p>新类：子类、派生类或孩子类</p>
-<p>子类比超类拥有的功能更加丰富，封装了更多数据、拥有更多功能。</p>
-<h3 id="覆盖方法"><a href="#覆盖方法" class="headerlink" title="覆盖方法"></a>覆盖方法</h3><p>子类不能直接访问超类的私有域</p>
-<p>super.方法 指示编译器调用超类的方法的特殊关键字</p>
-<h3 id="子类构造器"><a href="#子类构造器" class="headerlink" title="子类构造器"></a>子类构造器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Manager</span><span class="params">(String name, <span class="keyword">double</span> salary, <span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(name, salary, year, month, day);<span class="comment">//调用超类中含有name, salary, year, month, day参数的构造器</span></span><br><span class="line">    bonus = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>manage类不能访问employee类的私有域</p>
-<p>使用super实现对超类构造器的调用，super必须是子类构造器的第一条语句</p>
-<p>多态：一个变量对象可以指示多种实际类型的现象被称为<strong>多态</strong>，在运行时能够自动的选择调用哪个方法的现象称为<strong>动态绑定</strong>。</p>
-<h3 id="继承层次"><a href="#继承层次" class="headerlink" title="继承层次"></a>继承层次</h3><p>由一个公共超类派生出来的所有类的集合</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+          <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>《Java核心技术 卷I》第五章 本章主要内容是Java中继承的相关知识。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/27/%E7%BB%A7%E6%89%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -352,7 +324,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：16:34:08" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：17:15:33" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
             </span>
 
           
@@ -366,7 +338,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><h2 id="静态与与静态方法"><a href="#静态与与静态方法" class="headerlink" title="静态与与静态方法"></a>静态与与静态方法</h2>
+          <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><p>《Java核心技术 卷I》第四章 本章主要内容是Java中对象和类的知识。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/11/27/%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/#more" rel="contents">
@@ -443,7 +415,7 @@
   </nav>
 </div>
   <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
+    <a href="https://gaowei059.github.io/" target="_blank" rel="alternate noopener">
       <i class="fa fa-rss"></i>RSS
     </a>
   </div>
