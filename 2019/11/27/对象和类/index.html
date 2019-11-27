@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Keep Clam And Carry On！" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="对象和类静态与与静态方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象和类">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;27&#x2F;%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB&#x2F;index.html">
+<meta property="og:site_name" content="Keep Clam And Carry On！">
+<meta property="og:description" content="对象和类静态与与静态方法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-27T08:34:08.021Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/27/%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>对象和类 | Keep Clam And Carry On！</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keep Clam And Carry On！</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gao Wei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep Clam And Carry On！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          对象和类
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：16:34:08" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><h2 id="静态与与静态方法"><a href="#静态与与静态方法" class="headerlink" title="静态与与静态方法"></a>静态与与静态方法</h2> <a id="more"></a> 
+
+<h3 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h3><p>每个类中只有一个这样的域。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>静态域属于类，不属于任何独立的对象。静态域其实是类域。</p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法不能向对象实施操作，没有隐式的参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.pow(x,a)</span><br></pre></td></tr></table></figure>
+
+<p>静态方法不能访问实例域，不能操作对象，但是可以访问静态域。</p>
+<p>建议通过类对象的引用来调用方法。</p>
+<h3 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pulic <span class="class"><span class="keyword">class</span> <span class="title">Math</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.1416926</span>;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h3><p>不需要使用对象调用静态方法。</p>
+<h2 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h2><ul>
+<li>Java程序设计语言总是采用按值调用</li>
+<li>方法得到的所有参数值都是拷贝</li>
+<li>方法不能修改传递给它的任何参数变量的内容</li>
+</ul>
+<p>对于对象引用作为参数，对象引用以及其他的拷贝同时引用同一个对象，对象引用是按值传递的。</p>
+<p>总结Java中方法参数的使用情况</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数（数值型或布尔型）</li>
+<li>一个方法可以改变一个对象参数的状态</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
+</ul>
+<h2 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h2><h3 id="重载-overloading"><a href="#重载-overloading" class="headerlink" title="重载(overloading)"></a>重载(overloading)</h3><p>多个方法有相同的名字，不同的参数。</p>
+<p>重载解析：编译器用各个方法给出的参数类型与特定方法调用所使用的值类型进行匹配来挑选出相应的方法，如果找不到，就会产生编译错误。</p>
+<h3 id="默认域初始化"><a href="#默认域初始化" class="headerlink" title="默认域初始化"></a>默认域初始化</h3><p>如果不显式的给域赋初值，自动的赋为默认值，数值为0，布尔值为false，对象引用为null。</p>
+<h3 id="无参数构造器"><a href="#无参数构造器" class="headerlink" title="无参数构造器"></a>无参数构造器</h3><p>编写类没有编写构造函数——》系统提供无参数构造函数</p>
+<p>类中有构造器，但是无无参数构造函数——》构造对象时不提供参数被视为不合法</p>
+<h3 id="调用另一个构造器"><a href="#调用另一个构造器" class="headerlink" title="调用另一个构造器"></a>调用另一个构造器</h3><p>关键词this引用方法的隐式参数</p>
+<p>构造器中使用this(…)表示，构造器将调用同一个类的另一个构造器，可以用于对公共部分的构造器代码的简化。</p>
+<h3 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h3><ul>
+<li>在构造域中设置值</li>
+<li>在声明中赋值</li>
+<li>在初始化块中被初始化</li>
+</ul>
+<p>只要构造类对象，初始化块就被执行，先运行初始化块，再运行构造器的主体部分。</p>
+<p>下面是调用构造器的具体处理步骤</p>
+<ol>
+<li>所有数据域被初始化为默认值（0、false、或者null）</li>
+<li>按照在类的声明中出现的次序，依次执行所有域的初始化语句和初始化块</li>
+<li>如果构造器第一行调用了第二个构造器，则执行第二个构造器主体</li>
+<li>执行这个构造器的主体</li>
+</ol>
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>使用包可以确保类名的唯一性。</p>
+<p>从编译的角度看，嵌套的包之间没有任何关系。</p>
+<h3 id="类的导入"><a href="#类的导入" class="headerlink" title="类的导入"></a>类的导入</h3><p>使用import语句导入一个特定的类或者整个包。</p>
+<p>或者在每个类名之前添加完整包名。</p>
+<h3 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.*;</span><br></pre></td></tr></table></figure>
+
+<p>就可以使用System类的静态方法和静态域，不必加类名前缀。</p>
+<h3 id="将类放入包中"><a href="#将类放入包中" class="headerlink" title="将类放入包中"></a>将类放入包中</h3><p>将包的名字放在源文件的开头，包中定义类的代码之前。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.horstman.corejava</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有package语句，那么类被放置在默认包(default package)中。</p>
+<h2 id="类路径"><a href="#类路径" class="headerlink" title="类路径"></a>类路径</h2><p>类存储在文件系统子目录中，类的路径必须与包名匹配。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2019/11/27/%E7%BB%A7%E6%89%BF/" rel="next" title="继承">
+      继承 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对象和类"><span class="nav-number">1.</span> <span class="nav-text">对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态与与静态方法"><span class="nav-number">1.1.</span> <span class="nav-text">静态与与静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态域"><span class="nav-number">1.1.1.</span> <span class="nav-text">静态域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态常量"><span class="nav-number">1.1.3.</span> <span class="nav-text">静态常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main方法"><span class="nav-number">1.1.4.</span> <span class="nav-text">main方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法参数"><span class="nav-number">1.2.</span> <span class="nav-text">方法参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象构造"><span class="nav-number">1.3.</span> <span class="nav-text">对象构造</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重载-overloading"><span class="nav-number">1.3.1.</span> <span class="nav-text">重载(overloading)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认域初始化"><span class="nav-number">1.3.2.</span> <span class="nav-text">默认域初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无参数构造器"><span class="nav-number">1.3.3.</span> <span class="nav-text">无参数构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用另一个构造器"><span class="nav-number">1.3.4.</span> <span class="nav-text">调用另一个构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化块"><span class="nav-number">1.3.5.</span> <span class="nav-text">初始化块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包"><span class="nav-number">1.4.</span> <span class="nav-text">包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的导入"><span class="nav-number">1.4.1.</span> <span class="nav-text">类的导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态导入"><span class="nav-number">1.4.2.</span> <span class="nav-text">静态导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将类放入包中"><span class="nav-number">1.4.3.</span> <span class="nav-text">将类放入包中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类路径"><span class="nav-number">1.5.</span> <span class="nav-text">类路径</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Gao Wei"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Gao Wei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gao Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
