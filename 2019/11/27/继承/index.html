@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Keep Clam And Carry On！">
 <meta property="og:description" content="继承《Java核心技术 卷I》第五章 本章主要内容是Java中继承的相关知识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-27T09:16:06.564Z">
+<meta property="og:updated_time" content="2019-11-27T12:26:09.983Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/27/%E7%BB%A7%E6%89%BF/">
@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：17:16:06" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 16:32:43 / 修改时间：20:26:09" itemprop="dateCreated datePublished" datetime="2019-11-27T16:32:43+08:00">2019-11-27</time>
             </span>
 
           
@@ -226,7 +226,11 @@
 <p>使用super实现对超类构造器的调用，super必须是子类构造器的第一条语句</p>
 <p>多态：一个变量对象可以指示多种实际类型的现象被称为<strong>多态</strong>，在运行时能够自动的选择调用哪个方法的现象称为<strong>动态绑定</strong>。</p>
 <h3 id="继承层次"><a href="#继承层次" class="headerlink" title="继承层次"></a>继承层次</h3><p>由一个公共超类派生出来的所有类的集合</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>程序中出现超类对象对任何地方都可以引用子类对象置换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Employee e;</span><br><span class="line">e = <span class="keyword">new</span> Employee(...);<span class="comment">//</span></span><br><span class="line">e = <span class="keyword">new</span> Manger(...);<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p>在Java程序设计语言中，对象变量是<strong>多态</strong>的。一个Employee变量既可以引用一个Employee类对象，也可以引用一个Employee类对任何一个子类的对象。</p>
+
     </div>
 
     
@@ -301,7 +305,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
