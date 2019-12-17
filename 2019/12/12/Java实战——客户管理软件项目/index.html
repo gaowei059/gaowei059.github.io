@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <link rel="alternate" href="https://gaowei059.github.io/" title="Keep Clam And Carry On！" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Keep Clam And Carry On！" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
@@ -40,8 +40,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     sidebarPadding: 40
   };
@@ -125,6 +125,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">gwbiubiubiu</p>
   </div>
 
   <div class="site-nav-toggle">
@@ -145,14 +146,49 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-about">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -312,8 +348,8 @@
       <i class="fa fa-chevron-left"></i> Java数据结构与算法——队列
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/16/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2%E5%8A%A0%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AF%A6%E8%A7%A3/" rel="next" title="搭建一个hexo博客加上自己的域名详解">
-      搭建一个hexo博客加上自己的域名详解 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/17/%E4%BD%BF%E7%94%A8%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/" rel="next" title="使用七牛云搭建个人免费图床">
+      使用七牛云搭建个人免费图床 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -352,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求说明"><span class="nav-number">2.</span> <span class="nav-text">需求说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件设计结构"><span class="nav-number">3.</span> <span class="nav-text">软件设计结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现过程"><span class="nav-number">4.</span> <span class="nav-text">实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-键盘访问的实现"><span class="nav-number">4.1.</span> <span class="nav-text">1. 键盘访问的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Customer类的设计"><span class="nav-number">4.2.</span> <span class="nav-text">2. Customer类的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CustomerList类的设计"><span class="nav-number">4.3.</span> <span class="nav-text">3. CustomerList类的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CustomerView类的设计"><span class="nav-number">4.4.</span> <span class="nav-text">4. CustomerView类的设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成果展示"><span class="nav-number">5.</span> <span class="nav-text">成果展示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求说明"><span class="nav-text">需求说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件设计结构"><span class="nav-text">软件设计结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现过程"><span class="nav-text">实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-键盘访问的实现"><span class="nav-text">1. 键盘访问的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Customer类的设计"><span class="nav-text">2. Customer类的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CustomerList类的设计"><span class="nav-text">3. CustomerList类的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CustomerView类的设计"><span class="nav-text">4. CustomerView类的设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成果展示"><span class="nav-text">成果展示</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -366,18 +402,37 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">7</span>
+          <a href="/archives">
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="feed-link motion-element">
-    <a href="https://gaowei059.github.io/" target="_blank" rel="alternate noopener">
+    <a href="/atom.xml" rel="alternate">
       <i class="fa fa-rss"></i>RSS
     </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gaowei059" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gaowei059" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:gaowei059@163.com" title="E-Mail → mailto:gaowei059@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/2803819292" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2803819292" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wen-rou-ye-shou-98/activities" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wen-rou-ye-shou-98&#x2F;activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>Zhihu</a>
+      </span>
   </div>
 
 
@@ -395,6 +450,16 @@
     <footer class="footer">
       <div class="footer-inner">
         
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
 
 <div class="copyright">
   
@@ -405,11 +470,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Gao Wei</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
-  </div>
 
         
 
@@ -441,6 +501,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 
