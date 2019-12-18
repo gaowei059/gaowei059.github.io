@@ -3,7 +3,8 @@
   <entry>
     <title>Linux命令大全</title>
     <url>/2019/12/17/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/eiwfh4t4HxYl.jpg?imageslim" alt="mark"></p>
+    <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/eiwfh4t4HxYl.jpg?imageslim" alt="mark" style="zoom:150%;">
+
 ]]></content>
       <tags>
         <tag>笔记</tag>
@@ -13,8 +14,7 @@
   <entry>
     <title>Ecilpse快捷键大全</title>
     <url>/2019/12/17/Ecilpse%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/HsjjHdn4BKlc.jpg" alt="mark" style="zoom:150%;">
-
+    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191218/2xVBxhp3kcwK.jpg" alt="mark"></p>
 <a id="more"></a>
 
 <h3 id="Eclipse中的快捷键"><a href="#Eclipse中的快捷键" class="headerlink" title="Eclipse中的快捷键"></a>Eclipse中的快捷键</h3><ol>
@@ -107,8 +107,7 @@
   <entry>
     <title>Markdown语法总结</title>
     <url>/2019/12/17/Markdown%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/wEYEHBJMNkFg.jpg?imageslim" alt="mark"></p>
-]]></content>
+    <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/wEYEHBJMNkFg.jpg?imageslim" alt="mark" style="zoom:150%;">]]></content>
       <tags>
         <tag>笔记</tag>
         <tag>个人博客</tag>
@@ -118,7 +117,8 @@
   <entry>
     <title>Hexo博客系统搭建——经验总结</title>
     <url>/2019/12/17/Hexo+Github%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/h1vQm1zqT88I.jpg?imageslim" alt="mark"></p>
+    <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/h1vQm1zqT88I.jpg?imageslim" alt="mark" style="zoom:150%;">
+
 <a id="more"></a>
 
 <h1 id="Hexo博客系统搭建——经验总结"><a href="#Hexo博客系统搭建——经验总结" class="headerlink" title="Hexo博客系统搭建——经验总结"></a>Hexo博客系统搭建——经验总结</h1><p>Hexo是一个基于node.js制作的一个轻量静态博客工具，有很多的主题可供定制化，对中文用户也很友好。</p>
@@ -438,6 +438,32 @@
 <li>像String、Date、File、包装类等都重写了Object类中的toString()方法。使得在调用对象的toString()时，返回”实体内容”信息。</li>
 <li>自定义类也可以重写toString()方法，当调用此方法时，返回对象的”实体内容”。</li>
 </ol>
+<h3 id="Java中的JUnit单元测试"><a href="#Java中的JUnit单元测试" class="headerlink" title="Java中的JUnit单元测试"></a>Java中的JUnit单元测试</h3><p><strong>步骤：</strong></p>
+<ol>
+<li><p>选中当前工程 - 右键选择：build path - add libraries - JUnit 4 - 下一步</p>
+</li>
+<li><p>创建Java类，进行单元测试。此时的Java类要求：① 此类是public的  ②此类提供公共的无参的构造器</p>
+</li>
+<li><p>此类中声明单元测试方法。此时的单元测试方法：方法的权限是public,没有返回值，没有形参</p>
+</li>
+<li><p>此单元测试方法上需要声明注解：@Test,并在单元测试类中导入：import org.junit.Test;</p>
+</li>
+<li><p>声明好单元测试方法以后，就可以在方法体内测试相关的代码。</p>
+</li>
+<li><p>写完代码以后，左键双击单元测试方法名，右键：run as - JUnit Test</p>
+</li>
+</ol>
+<p><strong>说明：</strong></p>
+<p>1.如果执行结果没有任何异常：绿条</p>
+<p>2.如果执行结果出现异常：红条</p>
+<h3 id="包装类的使用"><a href="#包装类的使用" class="headerlink" title="包装类的使用"></a>包装类的使用</h3><ol>
+<li><p>Java提供了8种基本数据类型对应的包装类，使得基本数据类型的变量具有类的特征</p>
+</li>
+<li><p>掌握的：基本数据类型、包装类、String三者之间的相互转换</p>
+</li>
+</ol>
+<p>总结：基本类型、包装与 String类间的转换:</p>
+<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191218/dxFknG46u8Vy.png" alt="mark"></p>
 ]]></content>
   </entry>
   <entry>

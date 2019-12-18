@@ -54,7 +54,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191216&#x2F;adLGkvzIH0c5.jpg?imageslim">
 <meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191217&#x2F;oQ9iChTS5NSU.png?imageslim">
-<meta property="og:updated_time" content="2019-12-18T01:40:50.321Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191218&#x2F;dxFknG46u8Vy.png">
+<meta property="og:updated_time" content="2019-12-18T03:01:11.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191216&#x2F;adLGkvzIH0c5.jpg?imageslim">
 
@@ -240,7 +241,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 09:40:50" itemprop="dateModified" datetime="2019-12-18T09:40:50+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-18 11:01:11" itemprop="dateModified" datetime="2019-12-18T11:01:11+08:00">2019-12-18</time>
               </span>
 
           
@@ -378,6 +379,32 @@
 <li>像String、Date、File、包装类等都重写了Object类中的toString()方法。使得在调用对象的toString()时，返回”实体内容”信息。</li>
 <li>自定义类也可以重写toString()方法，当调用此方法时，返回对象的”实体内容”。</li>
 </ol>
+<h3 id="Java中的JUnit单元测试"><a href="#Java中的JUnit单元测试" class="headerlink" title="Java中的JUnit单元测试"></a>Java中的JUnit单元测试</h3><p><strong>步骤：</strong></p>
+<ol>
+<li><p>选中当前工程 - 右键选择：build path - add libraries - JUnit 4 - 下一步</p>
+</li>
+<li><p>创建Java类，进行单元测试。此时的Java类要求：① 此类是public的  ②此类提供公共的无参的构造器</p>
+</li>
+<li><p>此类中声明单元测试方法。此时的单元测试方法：方法的权限是public,没有返回值，没有形参</p>
+</li>
+<li><p>此单元测试方法上需要声明注解：@Test,并在单元测试类中导入：import org.junit.Test;</p>
+</li>
+<li><p>声明好单元测试方法以后，就可以在方法体内测试相关的代码。</p>
+</li>
+<li><p>写完代码以后，左键双击单元测试方法名，右键：run as - JUnit Test</p>
+</li>
+</ol>
+<p><strong>说明：</strong></p>
+<p>1.如果执行结果没有任何异常：绿条</p>
+<p>2.如果执行结果出现异常：红条</p>
+<h3 id="包装类的使用"><a href="#包装类的使用" class="headerlink" title="包装类的使用"></a>包装类的使用</h3><ol>
+<li><p>Java提供了8种基本数据类型对应的包装类，使得基本数据类型的变量具有类的特征</p>
+</li>
+<li><p>掌握的：基本数据类型、包装类、String三者之间的相互转换</p>
+</li>
+</ol>
+<p>总结：基本类型、包装与 String类间的转换:</p>
+<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191218/dxFknG46u8Vy.png" alt="mark"></p>
 
     </div>
 
@@ -437,7 +464,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类、超类和子类"><span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义子类"><span class="nav-text">定义子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖方法"><span class="nav-text">覆盖方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类构造器"><span class="nav-text">子类构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承层次"><span class="nav-text">继承层次</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态"><span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof-关键字"><span class="nav-text">instanceof 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类结构分析"><span class="nav-text">Object类结构分析</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类、超类和子类"><span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义子类"><span class="nav-text">定义子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖方法"><span class="nav-text">覆盖方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类构造器"><span class="nav-text">子类构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承层次"><span class="nav-text">继承层次</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态"><span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof-关键字"><span class="nav-text">instanceof 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类结构分析"><span class="nav-text">Object类结构分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的JUnit单元测试"><span class="nav-text">Java中的JUnit单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包装类的使用"><span class="nav-text">包装类的使用</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
