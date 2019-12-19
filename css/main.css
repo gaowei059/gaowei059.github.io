@@ -158,7 +158,7 @@ body {
   background: #eed;
   color: #555;
   font-family: 'Ink Free', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1.3em;
+  font-size: 1em;
   line-height: 2;
 }
 @media (max-width: 991px) {
@@ -976,7 +976,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #fff;
   display: inline-block;
-  line-height: 2em;
+  line-height: 2.5em;
   padding: 0 40px;
   position: relative;
 }
@@ -986,7 +986,7 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   font-family: 'Ink Free', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
@@ -1273,7 +1273,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #81a3aa;
+  background: #bb1bcf;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
