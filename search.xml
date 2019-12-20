@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Java数据结构与算法——链表</title>
-    <url>/2019/12/19/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8/</url>
+    <title>Java数据结构与算法——单链表</title>
+    <url>/2019/12/19/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%8D%95%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191219/QXv92AYeSPvA.jpg" alt="mark" style="zoom:200%;">
 
 <a id="more"></a>
@@ -48,16 +48,56 @@
 <li>求单链表中有效节点的个数</li>
 </ol>
 <ol start="2">
-<li>查找单链表中的倒数第k个结点 【新浪面试题】</li>
+<li>查找单链表中的倒数第k个结点 </li>
 </ol>
 <ol start="3">
-<li>单链表的反转【腾讯面试题，有点难度】</li>
+<li><p>单链表的反转</p>
+<ul>
+<li><p>方式1</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 反转链表方式1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reversetList</span><span class="params">(LinkedNode head)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (head.next == <span class="keyword">null</span> || head.next.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LinkedNode temp = head;</span><br><span class="line">	LinkedNode reverseNode = <span class="keyword">new</span> LinkedNode(<span class="number">0</span>, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">	LinkedNode reTEMP = reverseNode;</span><br><span class="line">	<span class="keyword">while</span> (head.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">		temp = head;</span><br><span class="line">		<span class="keyword">while</span> (temp.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">			temp = temp.next;</span><br><span class="line">		&#125;</span><br><span class="line">		reTEMP.next = temp.next;</span><br><span class="line">		reTEMP = reTEMP.next;</span><br><span class="line">		temp.next = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// break;</span></span><br><span class="line">	&#125;</span><br><span class="line">	head.next = reverseNode.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
 </ol>
+<ul>
+<li><p>方式2</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">revList</span><span class="params">(LinkedNode head)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 如果链表为空或只含有一个节点，直接返回</span></span><br><span class="line">	<span class="keyword">if</span> (head.next == <span class="keyword">null</span> || head.next.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	LinkedNode cur = head.next;</span><br><span class="line">	LinkedNode next;</span><br><span class="line">	LinkedNode revhead = <span class="keyword">new</span> LinkedNode(<span class="number">0</span>, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">	<span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">		next = cur.next;</span><br><span class="line">		cur.next = revhead.next;</span><br><span class="line">		revhead.next = cur;</span><br><span class="line">		cur = next;</span><br><span class="line">	&#125;</span><br><span class="line">	head.next = revhead.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
 <ol start="4">
-<li>从尾到头打印单链表 【百度，要求方式1：反向遍历 。 方式2：Stack栈】</li>
+<li><p>从尾到头打印单链表 </p>
+<ul>
+<li><p>方式1：反向遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方式1：</span></span><br><span class="line"><span class="comment">// 方向遍历</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">revPrint</span><span class="params">(LinkedNode head)</span> </span>&#123;</span><br><span class="line">	SingleLinkedList s1 = <span class="keyword">new</span> SingleLinkedList();</span><br><span class="line">	s1.head.next = head.next;</span><br><span class="line">	<span class="keyword">int</span> length = SingleLinkedList.getLength(head);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = length; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">		System.out.println(s1.getNode(i));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+</li>
 </ol>
+<ul>
+<li><p>方式2：Stack栈</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方式2：</span></span><br><span class="line"><span class="comment">// 可以利用栈这个数据结构，将各个节点压入到栈中，然后利用栈的先进后出的特点，就实现了逆序打印的效果</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reversePrint</span><span class="params">(LinkedNode head)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Stack&lt;LinkedNode&gt; stack = <span class="keyword">new</span> Stack&lt;LinkedNode&gt;();</span><br><span class="line">	LinkedNode temp = head.next;</span><br><span class="line">	<span class="keyword">while</span> (temp != <span class="keyword">null</span>) &#123;</span><br><span class="line">		stack.add(temp);</span><br><span class="line">		temp = temp.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (stack.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		System.out.println(stack.pop());</span><br><span class="line">	&#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
 <ol start="5">
-<li>合并两个有序的单链表，合并之后的链表依然有序【课后练习.】```</li>
+<li>合并两个有序的单链表，合并之后的链表依然有序</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
@@ -206,8 +246,8 @@
 
 ]]></content>
       <tags>
-        <tag>个人博客</tag>
         <tag>笔记</tag>
+        <tag>个人博客</tag>
         <tag>Markdown</tag>
       </tags>
   </entry>
