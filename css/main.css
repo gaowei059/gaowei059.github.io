@@ -179,22 +179,22 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: -0.1em;
+  font-size: 1.87em;
 }
 h2 {
-  font-size: -1.2em;
+  font-size: 1.74em;
 }
 h3 {
-  font-size: -2.3em;
+  font-size: 1.61em;
 }
 h4 {
-  font-size: -3.4em;
+  font-size: 1.48em;
 }
 h5 {
-  font-size: -4.5em;
+  font-size: 1.35em;
 }
 h6 {
-  font-size: -5.600000000000001em;
+  font-size: 1.22em;
 }
 p {
   margin: 0 0 20px 0;
@@ -976,7 +976,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #fff;
   display: inline-block;
-  line-height: 2em;
+  line-height: 36px;
   padding: 0 40px;
   position: relative;
 }
@@ -986,14 +986,14 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   font-family: 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif, sans-serif;
-  font-size: 2em;
+  font-size: 36px;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
 }
 .site-subtitle {
   color: #ddd;
-  font-size: 1.5em;
+  font-size: 15px;
   margin-top: 10px;
 }
 .use-motion .brand {
@@ -1273,7 +1273,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fcf;
+  background: #d7f6ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1625,7 +1625,7 @@ pre .javascript .function {
 }
 @media (min-width: 1200px) {
   .post-body {
-    font-size: 1.5em;
+    font-size: 20px;
   }
 }
 .post-body span.exturl .fa {
@@ -1674,7 +1674,7 @@ pre .javascript .function {
   }
 }
 .posts-collapse .collection-title {
-  font-size: 1.5em;
+  font-size: 20px;
   position: relative;
 }
 .posts-collapse .collection-title::before {
@@ -1895,7 +1895,7 @@ pre .javascript .function {
   display: table-row;
 }
 .posts-expand .post-header {
-  font-size: 1.5em;
+  font-size: 20px;
 }
 .posts-expand .post-title {
   font-weight: 400;
