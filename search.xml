@@ -2,9 +2,108 @@
 <search>
   <entry>
     <title>Java基础知识——抽象和接口</title>
-    <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
+    <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191221/DAppFmUfqzKl.jpg" alt="mark"></p>
-<a id="more"></a>]]></content>
+<a id="more"></a>
+
+<h1 id="Java基础知识——抽象和接口"><a href="#Java基础知识——抽象和接口" class="headerlink" title="Java基础知识——抽象和接口"></a>Java基础知识——抽象和接口</h1><h2 id="抽象：abstract"><a href="#抽象：abstract" class="headerlink" title="抽象：abstract"></a>抽象：abstract</h2><h3 id="abstract关键字的使用"><a href="#abstract关键字的使用" class="headerlink" title="abstract关键字的使用"></a>abstract关键字的使用</h3><ol>
+<li>abstract:抽象的</li>
+</ol>
+<ol start="2">
+<li>abstract可以用来修饰的结构：类、方法</li>
+</ol>
+<ol start="3">
+<li>abstract修饰类：抽象类</li>
+</ol>
+<blockquote>
+<p>此类不能实例化</p>
+<p>抽象类中一定有构造器，便于子类实例化时调用（涉及：子类对象实例化的全过程）</p>
+<p>开发中，都会提供抽象类的子类，让子类对象实例化，完成相关的操作</p>
+</blockquote>
+<ol start="4">
+<li>abstract修饰方法：抽象方法</li>
+</ol>
+<blockquote>
+<p>抽象方法只有方法的声明，没有方法体</p>
+<p>包含抽象方法的类，一定是一个抽象类。反之，抽象类中可以没有抽象方法的。</p>
+<p>若子类重写了父类中的所有的抽象方法后，此子类方可实例化</p>
+</blockquote>
+<p>若子类没有重写父类中的所有的抽象方法，则此子类也是一个抽象类，需要使用abstract修饰</p>
+<h3 id="abstract使用上的注意点"><a href="#abstract使用上的注意点" class="headerlink" title="abstract使用上的注意点"></a>abstract使用上的注意点</h3><p>abstract不能用来修饰：属性、构造器等结构</p>
+<p>abstract不能用来修饰私有方法、静态方法、final的方法、final的类</p>
+<h2 id="接口：interface"><a href="#接口：interface" class="headerlink" title="接口：interface"></a>接口：interface</h2><p>接口的使用</p>
+<p>1.接口使用interface来定义</p>
+<p>2.Java中，接口和类是并列的两个结构</p>
+<p>3.如何定义接口：定义接口中的成员</p>
+<p>3.1 JDK7及以前：只能定义全局常量和抽象方法</p>
+<blockquote>
+<p>全局常量：public static final的.但是书写时，可以省略不写</p>
+<p>抽象方法：public abstract的</p>
+</blockquote>
+<p>3.2 JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法</p>
+<blockquote>
+<p>知识点1：接口中定义的静态方法，只能通过接口来调用。</p>
+<p>知识点2：通过实现类的对象，可以调用接口中的默认方法。</p>
+<p>如果实现类重写了接口中的默认方法，调用时，仍然调用的是重写以后的方法<br>知识点3：如果子类(或实现类)继承的父类和实现的接口中声明了同名同参数的默认方法，</p>
+<p>那么子类在没有重写此方法的情况下，默认调用的是父类中的同名同参数的方法。–&gt;类优先原则</p>
+<p>知识点4：如果实现类实现了多个接口，而这多个接口中定义了同名同参数的默认方法，</p>
+<p>那么在实现类没有重写此方法的情况下，报错。–&gt;接口冲突。</p>
+<p>这就需要我们必须在实现类中重写此方法</p>
+</blockquote>
+<ol start="4">
+<li><p>接口中不能定义构造器的！意味着接口不可以实例化</p>
+</li>
+<li><p>Java开发中，接口通过让类去实现(implements)的方式来使用.</p>
+</li>
+</ol>
+<p>如果实现类覆盖了接口中的所有抽象方法，则此实现类就可以实例化</p>
+<p>如果实现类没有覆盖接口中所有的抽象方法，则此实现类仍为一个抽象类</p>
+<ol start="6">
+<li>Java类可以实现多个接口   —&gt;弥补了Java单继承性的局限性</li>
+</ol>
+<p>格式：class AA extends BB implements CC,DD,EE</p>
+<ol start="7">
+<li><p>接口与接口之间可以继承，而且可以多继承</p>
+</li>
+<li><p>接口的具体使用，体现多态性</p>
+</li>
+<li><p>接口，实际上可以看做是一种规范</p>
+</li>
+</ol>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><ol>
+<li><p>Java中允许将一个类A声明在另一个类B中，则类A就是内部类，类B称为外部类</p>
+</li>
+<li><p>内部类的分类：成员内部类（静态、非静态）  vs 局部内部类(方法内、代码块内、构造器内)</p>
+</li>
+<li><p>成员内部类：</p>
+</li>
+</ol>
+<p>一方面，作为外部类的成员：</p>
+<blockquote>
+<p>调用外部类的结构</p>
+<p>可以被static修饰</p>
+<p>可以被4种不同的权限修饰</p>
+</blockquote>
+<p>另一方面，作为一个类：</p>
+<blockquote>
+<p>类内可以定义属性、方法、构造器等</p>
+<p>可以被final修饰，表示此类不能被继承。言外之意，不使用final，就可以被继承</p>
+<p>可以被abstract修饰</p>
+</blockquote>
+<ol start="4">
+<li>关注如下的3个问题</li>
+</ol>
+<ul>
+<li><p>如何实例化成员内部类的对象</p>
+</li>
+<li><p>如何在成员内部类中区分调用外部类的结构</p>
+</li>
+<li><p>开发中局部内部类的使用  见《InnerClassTest1.java》</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest1</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//开发中很少见</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//局部内部类</span></span><br><span class="line">		<span class="class"><span class="keyword">class</span> <span class="title">AA</span></span>&#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回一个实现了Comparable接口的类的对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Comparable <span class="title">getComparable</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建一个实现了Comparable接口的类:局部内部类</span></span><br><span class="line">		<span class="comment">//方式一：</span></span><br><span class="line"><span class="comment">//		class MyComparable implements Comparable&#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//			@Override</span></span><br><span class="line"><span class="comment">//			public int compareTo(Object o) &#123;</span></span><br><span class="line"><span class="comment">//				return 0;</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line"><span class="comment">//			</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		return new MyComparable();</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//方式二：</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Comparable()&#123;</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>Java基础</category>
       </categories>
@@ -293,8 +392,8 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
-        <tag>Eclipse</tag>
         <tag>笔记</tag>
+        <tag>Eclipse</tag>
       </tags>
   </entry>
   <entry>
@@ -336,8 +435,8 @@
         <category>语法笔记</category>
       </categories>
       <tags>
-        <tag>个人博客</tag>
         <tag>笔记</tag>
+        <tag>个人博客</tag>
         <tag>Markdown</tag>
       </tags>
   </entry>
