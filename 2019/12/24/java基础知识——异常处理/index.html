@@ -55,7 +55,9 @@
 <meta property="og:site_name" content="Keep Clam And Carry On！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191224&#x2F;cKrbT5eichum.jpg">
-<meta property="og:updated_time" content="2019-12-24T02:14:15.631Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191224&#x2F;bLT684OP0eJG.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191224&#x2F;Y3gdDx15hqaP.png">
+<meta property="og:updated_time" content="2019-12-24T07:24:49.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;q2fz8l8jw.bkt.clouddn.com&#x2F;blog&#x2F;20191224&#x2F;cKrbT5eichum.jpg">
 
@@ -235,7 +237,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-24 10:12:24 / 修改时间：10:14:15" itemprop="dateCreated datePublished" datetime="2019-12-24T10:12:24+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 10:12:24 / 修改时间：15:24:49" itemprop="dateCreated datePublished" datetime="2019-12-24T10:12:24+08:00">2019-12-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,6 +264,102 @@
       
         <p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191224/cKrbT5eichum.jpg" alt="mark"></p>
 <a id="more"></a>
+
+<h2 id="Java基础知识——异常处理"><a href="#Java基础知识——异常处理" class="headerlink" title="Java基础知识——异常处理"></a>Java基础知识——异常处理</h2><h3 id="1-异常概述与异常体系结构"><a href="#1-异常概述与异常体系结构" class="headerlink" title="1. 异常概述与异常体系结构"></a>1. 异常概述与异常体系结构</h3><ul>
+<li><p>异常：在Java语言中，将程序执行中发生的不正常情况称为“异常” 。 (开发过程中的语法错误和逻辑错误不是异常)</p>
+</li>
+<li><p>Java程序在执行过程中所发生的异常事件可分为两类：</p>
+<ul>
+<li><p>Error：Java虚拟机无法解决的严重问题。如：JVM系统内部错误、资源 耗尽等严重情况。比如：StackOverflowError和OOM。一般不编写针对性 的代码进行处理。</p>
+</li>
+<li><p>Exception: 其它因编程错误或偶然的外在因素导致的一般性问题，可以使 用针对性的代码进行处理。例如：</p>
+<p><strong>空指针访问</strong> </p>
+<p><strong>试图读取不存在的文件</strong> </p>
+<p><strong>网络连接中断</strong></p>
+<p><strong>数组角标越界</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191224/bLT684OP0eJG.png" alt="mark"><br><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191224/Y3gdDx15hqaP.png" alt="mark"></p>
+<h3 id="2-常见异常"><a href="#2-常见异常" class="headerlink" title="2. 常见异常"></a>2. 常见异常</h3><h3 id="3-异常处理机制一：try–catch–finally"><a href="#3-异常处理机制一：try–catch–finally" class="headerlink" title="3. 异常处理机制一：try–catch–finally"></a>3. 异常处理机制一：try–catch–finally</h3><h4 id="异常的处理：抓抛模型"><a href="#异常的处理：抓抛模型" class="headerlink" title="异常的处理：抓抛模型"></a>异常的处理：抓抛模型</h4><ul>
+<li><p>过程一：”抛”：程序在正常执行的过程中，一旦出现异常，就会在异常代码处生成一个对应异常类的对象。并将此对象抛出。一旦抛出对象以后，其后的代码就不再执行。</p>
+<p>关于异常对象的产生：</p>
+<p>① 系统自动生成的异常对象</p>
+<p>② 手动的生成一个异常对象，并抛出（throw）</p>
+</li>
+<li><p>过程二：”抓”：可以理解为异常的处理方式：① try-catch-finally  ② throws</p>
+</li>
+</ul>
+<h4 id="try-catch-finally的使用"><a href="#try-catch-finally的使用" class="headerlink" title="try-catch-finally的使用"></a>try-catch-finally的使用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"> 		<span class="comment">//可能出现异常的代码</span></span><br><span class="line"> </span><br><span class="line"> &#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 变量名<span class="number">1</span>)&#123;</span><br><span class="line"> 		<span class="comment">//处理异常的方式1</span></span><br><span class="line"> &#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 变量名<span class="number">2</span>)&#123;</span><br><span class="line"> 		<span class="comment">//处理异常的方式2</span></span><br><span class="line"> &#125;<span class="keyword">catch</span>(异常类型<span class="number">3</span> 变量名<span class="number">3</span>)&#123;</span><br><span class="line"> 		<span class="comment">//处理异常的方式3</span></span><br><span class="line"> &#125;</span><br><span class="line"> ....</span><br><span class="line"> <span class="keyword">finally</span>&#123;</span><br><span class="line"> 		<span class="comment">//一定会执行的代码</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ol>
+<li><p>finally是可选的。</p>
+</li>
+<li><p>使用try将可能出现异常代码包装起来，在执行过程中，一旦出现异常，就会生成一个对应异常类的对象，根据此对象</p>
+</li>
+</ol>
+<p>的类型，去catch中进行匹配</p>
+<ol start="3">
+<li>一旦try中的异常对象匹配到某一个catch时，就进入catch中进行异常的处理。一旦处理完成，就跳出当前的</li>
+</ol>
+<p>try-catch结构（在没有写finally的情况）。继续执行其后的代码</p>
+<ol start="4">
+<li>catch中的异常类型如果没有子父类关系，则谁声明在上，谁声明在下无所谓。</li>
+</ol>
+<p>catch中的异常类型如果满足子父类关系，则要求子类一定声明在父类的上面。否则，报错</p>
+<ol start="5">
+<li><p>常用的异常对象处理的方式： ① String  getMessage()    ② printStackTrace()</p>
+</li>
+<li><p>在try结构中声明的变量，再出了try结构以后，就不能再被调用</p>
+</li>
+<li><p>try-catch-finally结构可以嵌套</p>
+</li>
+</ol>
+<p>体会1：使用try-catch-finally处理编译时异常，是得程序在编译时就不再报错，但是运行时仍可能报错。相当于我们使用try-catch-finally将一个编译时可能出现的异常，延迟到运行时出现。</p>
+<p>体会2：开发中，由于运行时异常比较常见，所以我们通常就不针对运行时异常编写try-catch-finally了。针对于编译时异常，我们说一定要考虑异常的处理。</p>
+<h4 id="try-catch-finally中finally的使用："><a href="#try-catch-finally中finally的使用：" class="headerlink" title="try-catch-finally中finally的使用："></a>try-catch-finally中finally的使用：</h4><ol>
+<li><p>finally是可选的</p>
+</li>
+<li><p>finally中声明的是一定会被执行的代码。即使catch中又出现异常了，try中有return语句，catch中有return语句等情况。</p>
+</li>
+<li><p>像数据库连接、输入输出流、网络编程Socket等资源，JVM是不能自动的回收的，我们需要自己手动的进行资源的释放。此时的资源释放，就需要声明在finally中。</p>
+</li>
+</ol>
+<h3 id="4-异常处理机制二：throws"><a href="#4-异常处理机制二：throws" class="headerlink" title="4. 异常处理机制二：throws"></a>4. 异常处理机制二：throws</h3><ol>
+<li><p>“throws + 异常类型”写在方法的声明处。指明此方法执行时，可能会抛出的异常类型。一旦当方法体执行时，出现异常，仍会在异常代码处生成一个异常类的对象，此对象满足throws后异常类型时，就会被抛出。异常代码后续的代码，就不再执行！</p>
+</li>
+<li><p>体会：try-catch-finally:真正的将异常给处理掉了。throws的方式只是将异常抛给了方法的调用者。  并没有真正将异常处理掉。  </p>
+</li>
+<li><p>开发中如何选择使用try-catch-finally 还是使用throws？</p>
+</li>
+</ol>
+<ul>
+<li><p>如果父类中被重写的方法没有throws方式处理异常，则子类重写的方法也不能使用throws，意味着如果子类重写的方法中有异常，必须使用try-catch-finally方式处理。</p>
+</li>
+<li><p>执行的方法a中，先后又调用了另外的几个方法，这几个方法是递进关系执行的。我们建议这几个方法使用throws的方式进行处理。而执行的方法a可以考虑使用try-catch-finally方式进行处理。</p>
+</li>
+</ul>
+<h3 id="5-手动抛出异常：throw"><a href="#5-手动抛出异常：throw" class="headerlink" title="5. 手动抛出异常：throw"></a>5. 手动抛出异常：throw</h3><p>Java异常类对象除在程序执行过程中出现异常时由系统自动生成并 抛出，也可根据需要使用人工创建并抛出。 </p>
+<ul>
+<li><p>首先要生成异常类对象，然后通过throw语句实现抛出操作(提交给Java运 行环境)。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IOException e = <span class="keyword">new</span> IOException(); </span><br><span class="line"><span class="keyword">throw</span> e;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以抛出的异常必须是Throwable或其子类的实例。下面的语句在编译时将 会产生语法错误： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> String(<span class="string">"want to throw"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="6-用户自定义异常"><a href="#6-用户自定义异常" class="headerlink" title="6. 用户自定义异常"></a>6. 用户自定义异常</h3><p>如何自定义异常类？</p>
+<ul>
+<li>继承于现有的异常结构：RuntimeException 、Exception</li>
+<li>提供全局常量：serialVersionUID</li>
+<li>提供重载的构造器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EcDef</span>  <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">33875164229948L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">EcDef</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">EcDef</span> <span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(message);	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 
     </div>
@@ -323,6 +421,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java基础知识——异常处理"><span class="nav-text">Java基础知识——异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-异常概述与异常体系结构"><span class="nav-text">1. 异常概述与异常体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常见异常"><span class="nav-text">2. 常见异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-异常处理机制一：try–catch–finally"><span class="nav-text">3. 异常处理机制一：try–catch–finally</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#异常的处理：抓抛模型"><span class="nav-text">异常的处理：抓抛模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-catch-finally的使用"><span class="nav-text">try-catch-finally的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-catch-finally中finally的使用："><span class="nav-text">try-catch-finally中finally的使用：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-异常处理机制二：throws"><span class="nav-text">4. 异常处理机制二：throws</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-手动抛出异常：throw"><span class="nav-text">5. 手动抛出异常：throw</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-用户自定义异常"><span class="nav-text">6. 用户自定义异常</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
