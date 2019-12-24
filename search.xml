@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java基础知识——异常处理</title>
+    <url>/2019/12/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191224/cKrbT5eichum.jpg" alt="mark"></p>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java基础知识——抽象和接口</title>
     <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191221/DAppFmUfqzKl.jpg" alt="mark"></p>
@@ -35,12 +50,16 @@
 <p>1.接口使用interface来定义</p>
 <p>2.Java中，接口和类是并列的两个结构</p>
 <p>3.如何定义接口：定义接口中的成员</p>
-<p>3.1 JDK7及以前：只能定义全局常量和抽象方法</p>
+<ul>
+<li>JDK7及以前：只能定义全局常量和抽象方法</li>
+</ul>
 <blockquote>
 <p>全局常量：public static final的.但是书写时，可以省略不写</p>
 <p>抽象方法：public abstract的</p>
 </blockquote>
-<p>3.2 JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法</p>
+<ul>
+<li>JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法</li>
+</ul>
 <blockquote>
 <p>知识点1：接口中定义的静态方法，只能通过接口来调用。</p>
 <p>知识点2：通过实现类的对象，可以调用接口中的默认方法。</p>
@@ -56,12 +75,16 @@
 <li><p>Java开发中，接口通过让类去实现(implements)的方式来使用.</p>
 </li>
 </ol>
+<blockquote>
 <p>如果实现类覆盖了接口中的所有抽象方法，则此实现类就可以实例化</p>
 <p>如果实现类没有覆盖接口中所有的抽象方法，则此实现类仍为一个抽象类</p>
+</blockquote>
 <ol start="6">
 <li>Java类可以实现多个接口   —&gt;弥补了Java单继承性的局限性</li>
 </ol>
+<blockquote>
 <p>格式：class AA extends BB implements CC,DD,EE</p>
+</blockquote>
 <ol start="7">
 <li><p>接口与接口之间可以继承，而且可以多继承</p>
 </li>
@@ -78,13 +101,17 @@
 <li><p>成员内部类：</p>
 </li>
 </ol>
-<p>一方面，作为外部类的成员：</p>
+<ul>
+<li>一方面，作为外部类的成员：</li>
+</ul>
 <blockquote>
 <p>调用外部类的结构</p>
 <p>可以被static修饰</p>
 <p>可以被4种不同的权限修饰</p>
 </blockquote>
-<p>另一方面，作为一个类：</p>
+<ul>
+<li>另一方面，作为一个类：</li>
+</ul>
 <blockquote>
 <p>类内可以定义属性、方法、构造器等</p>
 <p>可以被final修饰，表示此类不能被继承。言外之意，不使用final，就可以被继承</p>
@@ -392,8 +419,8 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
-        <tag>笔记</tag>
         <tag>Eclipse</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
