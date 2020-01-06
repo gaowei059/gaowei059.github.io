@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java数据结构与算法——递归</title>
+    <url>/2020/01/03/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20200106/DGC8ptzo9fEK.jpg" alt="mark"></p>
+<a id="more"></a>
+
+<h3 id="Java数据结构与算法——递归"><a href="#Java数据结构与算法——递归" class="headerlink" title="Java数据结构与算法——递归"></a>Java数据结构与算法——递归</h3><p>递归就是方法自己调用自己,每次调用时传入不同的变量.递归有助于编程者解决复杂的问题,同时可以让代码变得简洁。</p>
+<h4 id="递归需要遵守的重要规则"><a href="#递归需要遵守的重要规则" class="headerlink" title="递归需要遵守的重要规则"></a>递归需要遵守的重要规则</h4><ol>
+<li><p>执行一个方法时，就创建一个新的受保护的独立空间(栈空间)</p>
+</li>
+<li><p>方法的局部变量是独立的，不会相互影响, 比如n变量</p>
+</li>
+<li><p>如果方法中使用的是引用类型变量(比如数组)，就会共享该引用类型的数据.</p>
+</li>
+<li><p>递归必须向退出递归的条件逼近，否则就是无限递归,出现StackOverflowError，死龟了:)</p>
+</li>
+<li><p>当一个方法执行完毕，或者遇到return，就会返回，遵守谁调用，就将结果返回给谁，同时当方法执行完毕或者返回时，该方法也就执行完毕。</p>
+</li>
+</ol>
+<h3 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gaowei.recursion;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Maze</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[][] map = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">8</span>][<span class="number">7</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) &#123;</span><br><span class="line">			map[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">			map[<span class="number">7</span>][i] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">			map[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">			map[i][<span class="number">6</span>] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		map[<span class="number">3</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		map[<span class="number">3</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">		System.out.println(<span class="string">"原来地图："</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">7</span>; j++) &#123;</span><br><span class="line">				System.out.print(map[i][j] + <span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">		setWay(map, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">		System.out.println(<span class="string">"寻迹后地图："</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">7</span>; j++) &#123;</span><br><span class="line">				System.out.print(map[i][j] + <span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用递归回溯来给小球找路</span></span><br><span class="line">	<span class="comment">// 说明</span></span><br><span class="line">	<span class="comment">// 1. map 表示地图</span></span><br><span class="line">	<span class="comment">// 2. i,j 表示从地图的哪个位置开始出发 (1,1)</span></span><br><span class="line">	<span class="comment">// 3. 如果小球能到 map[6][5] 位置，则说明通路找到.</span></span><br><span class="line">	<span class="comment">// 4. 约定： 当map[i][j] 为 0 表示该点没有走过 当为 1 表示墙 ； 2 表示通路可以走 ； 3 表示该点已经走过，但是走不通</span></span><br><span class="line">	<span class="comment">// 5. 在走迷宫时，需要确定一个策略(方法) 下-&gt;右-&gt;上-&gt;左 , 如果该点走不通，再回溯</span></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> map 表示地图</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> i   从哪个位置开始找</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> j</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 如果找到通路，就返回true, 否则返回false</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">setWay</span><span class="params">(<span class="keyword">int</span>[][] map, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (map[<span class="number">6</span>][<span class="number">5</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (map[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">				map[i][j] = <span class="number">2</span>;</span><br><span class="line">				<span class="keyword">if</span> (setWay(map, i + <span class="number">1</span>, j)) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (setWay(map, i, j + <span class="number">1</span>)) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (setWay(map, i - <span class="number">1</span>, j)) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (setWay(map, i, j - <span class="number">1</span>)) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					map[i][j] = <span class="number">3</span>;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<p><img src="http://image.gwbiubiubiu.com/blog/20200106/MUVajwy4oUnt.png" alt="mark"></p>
+<h3 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h3><p><strong>问题提出：</strong></p>
+<p>八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即：任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gaowei.recursion;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queen8</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> MAX = <span class="number">8</span>;</span><br><span class="line">	<span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[MAX];</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> judgeCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Queen8 queen8 = <span class="keyword">new</span> Queen8();</span><br><span class="line">		queen8.check(<span class="number">0</span>);</span><br><span class="line">		System.out.println(count + <span class="string">" "</span> + judgeCount);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 编写一个方法，放置第n个皇后</span></span><br><span class="line">	<span class="comment">// 特别注意： check 是 每一次递归时，进入到check中都有 for(int i = 0; i &lt; max; i++)，因此会有回溯</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n == MAX) &#123;</span><br><span class="line">			print();</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; i++) &#123;</span><br><span class="line">			array[n] = i;</span><br><span class="line">			<span class="keyword">if</span>(judge(n)) &#123;</span><br><span class="line">				check(n+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 查看当我们放置第n个皇后, 就去检测该皇后是否和前面已经摆放的皇后冲突</span></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> n 表示第n个皇后</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		judgeCount++;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (array[i] == array[n] || Math.abs(n - i) == Math.abs(array[n] - array[i])) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 写一个方法，可以将皇后摆放的位置输出</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		count++;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">			System.out.print(array[i] + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<p><img src="http://image.gwbiubiubiu.com/blog/20200106/bpTYSRYV8VR8.png" alt="mark"></p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日一题——多线程打印</title>
+    <url>/2020/01/03/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%93%E5%8D%B0/</url>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20200103/bYjUV3wAQ6M4.jpg" alt="mark"></p>
+<a id="more"></a>
+
+<h5 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h5><p>创建两个线程，其中一个输出<code>1</code>-<code>52</code>，另外一个输出A-Z。输出格式要求：12A 34B 56C 78D …</p>
+<h5 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a><strong>输入描述:</strong></h5><p>1、线程1打印1-52的数字2、线程2打印26个字母</p>
+<h5 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a><strong>输出描述:</strong></h5><p>每打印两个数字后打印一个字母，直到最终所有数字和字母都打印完成</p>
+<h5 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h5><p>定义两个类，分别继承Thread或实现Runnable。其中一个类中的run方法用于输出数字，当输出数字为偶数时wait，进入等待队列，且使用notify唤醒其他线程；另一个类中输出字母，每输出一个字母后，wait进入等待队列，且使用notify唤醒其他线程。两个类的run方法都使用同步代码块，对同一个对象加锁。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exe1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Object object = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread1(object)).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread2(object)).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread1</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object object = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Thread1</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(object)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">52</span>; i++)&#123;</span><br><span class="line">                System.out.print(i);</span><br><span class="line">                <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                    object.notifyAll();</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        object.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread2</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object object = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Thread2</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(object)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">char</span> i =<span class="string">'A'</span>; i &lt;= <span class="string">'Z'</span>; i++)&#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">                object.notifyAll();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    object.wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="string">'Z'</span>)&#123;</span><br><span class="line">                object.notifyAll();</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h5><p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20200103/6DB3sNltGTSu.png" alt="mark"></p>
+]]></content>
+      <categories>
+        <category>Java练习</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java语言高级——常用类</title>
+    <url>/2019/12/31/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E7%B1%BB/</url>
+    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191231/r3HV0udurzYR.jpg" alt="mark"></p>
+<a id="more"></a>
+
+<h2 id="Java语言高级——常用类"><a href="#Java语言高级——常用类" class="headerlink" title="Java语言高级——常用类"></a>Java语言高级——常用类</h2><h3 id="字符串相关的类"><a href="#字符串相关的类" class="headerlink" title="字符串相关的类"></a>字符串相关的类</h3><p>String:字符串，使用一对””引起来表示。<br>    1.String声明为final的，不可被继承<br>    2.String实现了Serializable接口：表示字符串是支持序列化的。<br>            实现了Comparable接口：表示String可以比较大小<br>    3.String内部定义了final char[] value用于存储字符串数据<br>    4.String:代表不可变的字符序列。简称：不可变性。<br>        体现：1.当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值。<br>             2. 当对现有的字符串进行连接操作时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值。<br>             3. 当调用String的replace()方法修改指定字符或字符串时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值。<br>    5.通过字面量的方式（区别于new）给一个字符串赋值，此时的字符串值声明在字符串常量池中。<br>    6.字符串常量池中是不会存储相同内容的字符串的。</p>
+<h3 id="啊"><a href="#啊" class="headerlink" title="啊"></a>啊</h3>]]></content>
+      <categories>
+        <category>Java高级</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java数据结构与算法——堆栈</title>
     <url>/2019/12/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%A0%86%E6%A0%88/</url>
     <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191229/Tfa3DK90E3vf.jpg" alt="mark"></p>
@@ -425,7 +502,7 @@
   <entry>
     <title>Java基础知识——抽象和接口</title>
     <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191221/DAppFmUfqzKl.jpg" alt="mark"></p>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20191221/DAppFmUfqzKl.jpg" alt="mark"></p>
 <a id="more"></a>
 
 <h1 id="Java基础知识——抽象和接口"><a href="#Java基础知识——抽象和接口" class="headerlink" title="Java基础知识——抽象和接口"></a>Java基础知识——抽象和接口</h1><h2 id="抽象：abstract"><a href="#抽象：abstract" class="headerlink" title="抽象：abstract"></a>抽象：abstract</h2><h3 id="abstract关键字的使用"><a href="#abstract关键字的使用" class="headerlink" title="abstract关键字的使用"></a>abstract关键字的使用</h3><ol>
@@ -740,7 +817,7 @@
   <entry>
     <title>Ecilpse快捷键大全</title>
     <url>/2019/12/17/Ecilpse%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191218/2xVBxhp3kcwK.jpg" alt="mark"></p>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20191218/2xVBxhp3kcwK.jpg" alt="mark"></p>
 <a id="more"></a>
 
 <h3 id="Eclipse中的快捷键"><a href="#Eclipse中的快捷键" class="headerlink" title="Eclipse中的快捷键"></a>Eclipse中的快捷键</h3><ol>
@@ -826,8 +903,8 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
-        <tag>笔记</tag>
         <tag>Eclipse</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -877,20 +954,20 @@
   <entry>
     <title>Hexo博客系统搭建——经验总结</title>
     <url>/2019/12/17/Hexo+Github%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/h1vQm1zqT88I.jpg?imageslim" alt="mark" style="zoom:150%;" />
+    <content><![CDATA[<img src="http://image.gwbiubiubiu.com/blog/20191217/h1vQm1zqT88I.jpg?imageslim" alt="mark" style="zoom:150%;" />
 
 <a id="more"></a>
 
 <h1 id="Hexo博客系统搭建——经验总结"><a href="#Hexo博客系统搭建——经验总结" class="headerlink" title="Hexo博客系统搭建——经验总结"></a>Hexo博客系统搭建——经验总结</h1><p>Hexo是一个基于node.js制作的一个轻量静态博客工具，有很多的主题可供定制化，对中文用户也很友好。</p>
 <p>主页：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
-<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191216/NLBzdnlHBqOC.png?imageslim" alt="mark"></p>
+<p><img src="http://image.gwbiubiubiu.com/blog/20191216/NLBzdnlHBqOC.png?imageslim" alt="mark"></p>
 <p>下面我们就一起开始用Hexo来搭建属于自己的个人博客把。</p>
 <p>【注】笔者用的是Windows系统，所以大部分操作是在cmd上完成的，如果使用Mac或者Linux应该大同小异，就不再赘述了。</p>
 <h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>因为Hexo是基于Node.js 开发的，所以肯定是需要安装node.js的，这个直接去官网下载安装包就行，安装后可以输入以下命令查看版本号，用于验证自己是否正确安装。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
 
 <p>显示版本号表示成功安装：</p>
-<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191216/HT6PTdeCeeEd.png?imageslim" alt="mark"></p>
+<p><img src="http://image.gwbiubiubiu.com/blog/20191216/HT6PTdeCeeEd.png?imageslim" alt="mark"></p>
 <h2 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h2><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2>]]></content>
       <categories>
         <category>项目实战</category>
@@ -905,6 +982,7 @@
     <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191217/gsPut9AvGaRr.jpg" alt="mark"></p>
 <a id="more"></a>
 
+<p><img src="%E4%BD%BF%E7%94%A8%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/image-20200102094721845.png" alt="image-20200102094721845"></p>
 ]]></content>
       <categories>
         <category>项目实战</category>
@@ -918,7 +996,7 @@
   <entry>
     <title>Java基础知识——继承与多态</title>
     <url>/2019/12/15/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191216/adLGkvzIH0c5.jpg?imageslim" alt="mark"><br> <a id="more"></a> </p>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20191216/adLGkvzIH0c5.jpg?imageslim" alt="mark"><br> <a id="more"></a> </p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>《Java核心技术 卷I》第五章 本章主要内容是Java中继承的相关知识。</p>
 <h2 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h2><p>“is-a”关系是继承的一个明显特征</p>
 <h3 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h3><p>关键字extends表示继承</p>
@@ -1236,7 +1314,7 @@
   <entry>
     <title>Java基础知识——对象和类</title>
     <url>/2019/12/09/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/</url>
-    <content><![CDATA[<p><img src="http://q2fz8l8jw.bkt.clouddn.com/blog/20191216/XxQail85b7FQ.jpg?imageslim" alt="mark"> </p>
+    <content><![CDATA[<p><img src="http://image.gwbiubiubiu.com/blog/20191216/XxQail85b7FQ.jpg?imageslim" alt="mark"> </p>
 <a id="more"></a> 
 
 <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><p>《Java核心技术 卷I》第四章 本章主要内容是Java中对象和类的知识。</p>
